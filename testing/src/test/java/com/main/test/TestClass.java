@@ -34,12 +34,12 @@ protected WebDriver driver;
     @BeforeTest
     public void setUp()  {
         System.out.println("before test");  
-	
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-        capabilities.setCapability(ChromeOptions.CAPABILITY,options);
-        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+	DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("headless");
+	capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+	driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
+        driver.manage().window().maximize();
     }
 
    @Test()
