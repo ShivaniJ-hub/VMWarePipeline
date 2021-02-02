@@ -26,7 +26,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
-public class SearchTest {
+public class TestClass {
 protected WebDriver driver;
     
     @BeforeSuite
