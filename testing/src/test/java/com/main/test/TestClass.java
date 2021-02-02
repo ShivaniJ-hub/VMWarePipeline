@@ -32,7 +32,7 @@ protected WebDriver driver;
         
     }
     @BeforeTest
-    public void setUp()  {
+    public void setUp() throws MalformedURLException {
         System.out.println("before test");  
 	DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 	ChromeOptions options = new ChromeOptions();
@@ -43,7 +43,7 @@ protected WebDriver driver;
     }
 
    @Test()
-    public void googleTest() throws MalformedURLException {
+    public void googleTest() {
               
         //driver.get("http://devopsteamgoa.westindia.cloudapp.azure.com:9090/MusicStore/index.html");  
 	driver.get("https://google.com");
