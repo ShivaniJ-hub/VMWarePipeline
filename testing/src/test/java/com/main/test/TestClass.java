@@ -46,14 +46,14 @@ protected WebDriver driver;
     public void googleTest() {
               
         //driver.get("http://devopsteamgoa.westindia.cloudapp.azure.com:9090/MusicStore/index.html");  
-	driver.get("https://google.com");
+	driver.get("http://localhost:9090/MusicStore/index.html");
         // get the current URL of the page   
         String URL= driver.getCurrentUrl();  
         System.out.println("current URL of the page fetched: "+URL); 
         //get the title of the page  
         String title = driver.getTitle();                  
         System.out.println("Title: "+title);  
-        if(title.equals("Google"))
+        if(title.equals("MusicStore"))
              {Assert.assertTrue(true);
              System.out.println("1");  
              }
