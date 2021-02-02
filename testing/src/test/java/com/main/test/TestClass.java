@@ -1,6 +1,4 @@
-package com.testautomationguru.container.test;
-
-
+package com.main.test;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
