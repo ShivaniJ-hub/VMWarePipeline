@@ -50,7 +50,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-			sh 'docker run -d --name mytomcat -p 9090:8080 shivani221/tomcatserver'
+				sh 'docker run -d --name mytomcat -p 9090:8080 shivani221/tomcatserver'
             }
         }
         stage('Check Version') {
@@ -68,8 +68,10 @@ pipeline {
 		stage('Run Selenium test') {
             steps {
                 sh '''cd testing
-		      docker-compose up -d
-		      mvn clean test'''
+				docker-compose up -d --scale chrome=3 
+				mvn clean -Dtest="UUIDTest.java,TestClass.java" test -Duuid="${verCode}"
+				#mvn clean -Dtest="FailTest.java" test -Duuid="${verCode}"
+				'''
             }
         }
 		stage('Deploy to Tomcat') {
@@ -81,7 +83,7 @@ pipeline {
             steps {
                 script{
         		    def code = sh(script: 'curl -s -o /dev/null -w "%{http_code}" http://localhost:8081/music/index.html', returnStdout: true)
-        		    if(code == 200)
+        		    if(code == '200')
         		        echo 'Successfully deployed'
         		    else
         		        echo 'Not deployed successfully'
@@ -91,8 +93,11 @@ pipeline {
     }
 	post {
         always {
-            sh '''docker rm -f mytomcat
-		  docker-compose down'''
+            sh '''
+				docker rm -f mytomcat
+				cd testing
+				docker-compose down
+			'''
         }
         success {
             echo 'Pipeline was Successful'
@@ -101,7 +106,7 @@ pipeline {
             echo 'Pipeline was unstable :/'
         }
         failure {
-            echo 'Pipeline was failed :('
+            echo 'Pipeline failed :('
         }
     }
 } 
