@@ -7,11 +7,10 @@ import java.net.MalformedURLException;
 import com.google.common.util.concurrent.Uninterruptibles;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-
+import org.openqa.selenium.By;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -21,7 +20,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
-public class TestClass {
+public class UUIDTest {
 protected WebDriver driver;
     
     @BeforeSuite
