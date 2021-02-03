@@ -21,3 +21,7 @@ resource "docker_image" "myimage" {
       path="."
   }
 }
+
+variable "password" {
+  type = string
+}
