@@ -22,6 +22,11 @@ resource "docker_image" "myimage" {
   }
 }
 
+resource "docker_container" "mycontainer" {
+  name  = "mytomcat"
+  image = docker_image.myimage.latest
+}
+
 variable "password" {
   type = string
 }
