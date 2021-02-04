@@ -42,6 +42,7 @@ resource "docker_image" "selenium" {
 resource "docker_container" "selenium-hub" {
   name = "selenium-hub"
   image = docker_image.selenium.latest
+  must_run = true
   ports {
     internal = 4444
     external = 4444
@@ -54,9 +55,10 @@ resource "docker_container" "selenium-hub" {
 resource "docker_image" "chromeimg" {
   name = "selenium/node-chrome"
 }
-resource "docker_container" "chrome_1" {
+resource "docker_container" "chrome" {
   name  = "chrome"
   image = docker_image.chromeimg.latest
+  must_run = true
   ports {
     internal = 5900
   }
