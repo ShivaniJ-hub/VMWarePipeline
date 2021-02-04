@@ -20,6 +20,7 @@ resource "docker_image" "myimage" {
   build {
       path="."
   }
+  force_remove = true
 }
 
 resource "docker_container" "mycontainer" {
