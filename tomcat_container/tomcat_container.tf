@@ -6,6 +6,11 @@ terraform {
     }
   }
 }
+
+variable "password" {
+  type = string
+}
+
 provider "docker" {
 
   registry_auth {
@@ -33,6 +38,3 @@ resource "docker_container" "mycontainer" {
   }
 }
 
-variable "password" {
-  type = string
-}
