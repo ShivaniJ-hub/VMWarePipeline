@@ -33,6 +33,3 @@ resource "docker_container" "mycontainer" {
   }
 }
 
-variable "password" {
-  type = string
-}
