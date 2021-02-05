@@ -7,9 +7,6 @@ terraform {
   }
 }
 
-variable "password" {
-  type = string
-}
 
 provider "docker" {
 
