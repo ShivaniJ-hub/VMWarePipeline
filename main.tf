@@ -39,7 +39,7 @@ variable "password" {
     type = string
 }
 resource "docker_network" "my_network" {
-  name = "selenium"
+  name = "seleniumnetwork"
 }
 resource "docker_image" "selenium" {
   name = "selenium/hub"
