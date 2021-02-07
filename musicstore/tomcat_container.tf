@@ -19,7 +19,7 @@ provider "docker" {
 resource "docker_image" "myimage" {
   name = "shivani221/tomcatserver:latest"
   build {
-      path="/"
+      path="."
   }
   force_remove = true
 }
