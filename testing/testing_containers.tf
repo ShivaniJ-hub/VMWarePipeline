@@ -9,7 +9,7 @@ terraform {
 provider "docker" {
 }
 resource "docker_network" "my_network" {
-  name = "selenium"
+  name = "selenium_net"
 }
 resource "docker_image" "selenium" {
   name = "selenium/hub"
