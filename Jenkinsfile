@@ -106,6 +106,7 @@ pipeline {
 	        cd testing
 	        docker-compose down
 		'''*/
+	    echo 'Always'
         }
         success {
             echo 'Pipeline was Successful'
