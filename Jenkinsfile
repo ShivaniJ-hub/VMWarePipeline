@@ -14,7 +14,7 @@ pipeline {
         stage('SCM') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'master', url: 'https://github.com/ShivaniJ-hub/JenkinsPipeline.git'
+                git branch: 'master', url: 'https://github.com/ShivaniJ-hub/VMWarePipeline.git'
 
                 //Creating version.html and writing string to it
                 sh '''
