@@ -1,5 +1,7 @@
 provider "aws" {
-  region=var.region
+  region="ap-south-1"
+  access_key = var.access
+  secret_key = var.secret
 }
 
 resource "aws_instance" "Tomcat-Server" {
@@ -24,4 +26,13 @@ resource "aws_instance" "Tomcat-Server" {
 
 data "template_file" "asg_init" {
   template = file("${path.module}/userdata.tpl")
+}
+
+variable "access" {
+  type = string
+  default = "access-key"
+}
+variable "secret" {
+  type = string
+  default = "secret-key"
 }
