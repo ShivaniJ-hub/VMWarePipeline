@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = file(var.sshkey)
+  public_key = var.sshkey
 }
 
 resource "aws_instance" "Tomcat-Server" {
@@ -24,7 +24,7 @@ resource "aws_instance" "Tomcat-Server" {
         type     = "ssh"
         user     = "ec2-user"
         host     = self.public_ip
-        private_key = file(var.sshkey)
+        private_key = file("my-key.pem")
       }
     }
 }
