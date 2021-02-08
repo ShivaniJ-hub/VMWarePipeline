@@ -3,15 +3,15 @@ module "tomcat_container" {
   source = "./musicstore"
   password=var.pass
 }
-
 module "testing_containers" {
   source = "./testing"
 } 
-   
 module "awstomcat" {
   source = "./awstomcat"
+  sshkey=var.ssh
+  access=var.acc
+  secret=var.sec
 } 
-  
 variable "pass" {
   type = string
   default = "password"
