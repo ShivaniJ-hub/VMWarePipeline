@@ -24,7 +24,7 @@ resource "aws_instance" "Tomcat-Server" {
         type     = "ssh"
         user     = "ec2-user"
         host     = self.public_ip
-        private_key = file("my_key.pem")
+        private_key = file("awstomcat/my_key.pem")
       }
     }
 }
