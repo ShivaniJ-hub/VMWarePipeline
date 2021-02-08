@@ -4,6 +4,11 @@ provider "aws" {
   secret_key = var.secret
 }
 
+resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  public_key = var.sshkey
+}
+
 resource "aws_instance" "Tomcat-Server" {
     ami = "ami-08e0ca9924195beba"
     instance_type = "t2.micro"
@@ -19,7 +24,7 @@ resource "aws_instance" "Tomcat-Server" {
         type     = "ssh"
         user     = "ec2-user"
         host     = self.public_ip
-        private_key = file("my-sshkey.pem")
+        private_key = var.sshkey
       }
     }
 }
@@ -27,12 +32,12 @@ resource "aws_instance" "Tomcat-Server" {
 data "template_file" "asg_init" {
   template = file("${path.module}/userdata.tpl")
 }
-
+variable "sshkey" {
+  type = string
+}
 variable "access" {
   type = string
-  default = "access-key"
 }
 variable "secret" {
   type = string
-  default = "secret-key"
 }
