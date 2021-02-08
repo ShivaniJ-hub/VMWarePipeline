@@ -24,3 +24,7 @@ variable "sec" {
   type = string
   default = "secret-key"
 }
+variable "ssh" {
+  type = string
+  default = "sshkey"
+}
