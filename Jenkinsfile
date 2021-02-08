@@ -34,7 +34,7 @@ pipeline {
                     mvn clean package
                 '''
             }
-        }
+        }/*
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t shivani221/tomcatserver .'
@@ -88,6 +88,12 @@ pipeline {
         		    else
         		        echo 'Not deployed successfully'
 		        }
+            }
+        }*/
+	stage('Terraform AWS') {
+            steps {
+                sh 'cp /musicstore/target/MusicStore.war /awstomcat/MusicStore'
+		sh 'terraform apply -target=module.awstomcat'
             }
         }
     }
