@@ -15,7 +15,7 @@ resource "aws_instance" "Tomcat-Server" {
     tags = {
         Name = "Tomcat-Server"
     }
-    key_name = aws_key_pair.my_key.name
+    key_name = aws_key_pair.my_key.key_name
     user_data = data.template_file.asg_init.rendered
     provisioner "file" {
       source      = "MusicStore.war"
