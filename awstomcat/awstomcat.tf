@@ -18,7 +18,7 @@ resource "aws_instance" "Tomcat-Server" {
     key_name = aws_key_pair.my_key.key_name
     user_data = data.template_file.asg_init.rendered
     provisioner "file" {
-      source      = "MusicStore.war"
+      source      = "awstomcat/MusicStore.war"
       destination = "/tmp/MusicStore.war"
       connection {
         type     = "ssh"
