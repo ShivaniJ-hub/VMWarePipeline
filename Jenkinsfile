@@ -63,7 +63,7 @@ pipeline {
         }
         stage('Check Version') {
             steps {
-                sleep 10
+                sleep 15
                 script{
         		    def response = sh(script: 'curl http://192.168.111.128:9090/MusicStore/version.html', returnStdout: true)
         		    if(env.verCode == response)
