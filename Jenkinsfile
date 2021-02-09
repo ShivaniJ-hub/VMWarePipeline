@@ -95,8 +95,9 @@ pipeline {
 		withCredentials([string(credentialsId: '17a2b79b-9cc5-455d-94a1-1f20107599d7', variable: 'ssh'), string(credentialsId: '3c43648f-c6e5-4fc4-a491-ffd262c302f0', variable: 'acc'), string(credentialsId: '6a343ffb-a04c-439a-a4f8-75b5b6d51c74', variable: 'sec')]) {
 		    sh 'cp musicstore/target/MusicStore.war awstomcat/MusicStore.war'
 		    sh 'terraform init'
-		    //sh 'terraform destroy -auto-approve'
+		    sh 'terraform destroy -auto-approve'
 		    sh 'terraform apply -target=module.awstomcat -var "acc=$acc" -var "sec=$sec" -auto-approve '
+		    sh 'terraform output AWS_Link'
 		}
             }
         }
