@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_key_pair" "my_key" {
   key_name   = "my-key"
-  public_key = file("awstomcat/pub_key.pub")
+  public_key = file("pub_key.pub")
 }
 
 resource "aws_instance" "Tomcat-Server" {
@@ -18,13 +18,13 @@ resource "aws_instance" "Tomcat-Server" {
     key_name = aws_key_pair.my_key.key_name
     user_data = data.template_file.asg_init.rendered
     provisioner "file" {
-      source      = "awstomcat/MusicStore.war"
+      source      = "MusicStore.war"
       destination = "/tmp/MusicStore.war"
       connection {
         type     = "ssh"
         user     = "ec2-user"
         host     = self.public_ip
-        private_key = file("awstomcat/pri_key.ppk")
+        private_key = file("pri_key.ppk")
       }
     }
 }
