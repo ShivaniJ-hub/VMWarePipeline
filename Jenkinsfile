@@ -52,7 +52,7 @@ pipeline {
             steps {
 				sh 'docker run -d --name mytomcat -p 9090:8080 shivani221/tomcatserver'
             }
-        }*/
+        }
 	stage('Terraform Publish Docker Image') {
             steps {
                 withCredentials([usernamePassword(credentialsId: '593fae78-145c-4817-b063-1eb5c20e7dcf', passwordVariable: 'dockerpass', usernameVariable: 'dockeruser')]) {
@@ -100,15 +100,15 @@ pipeline {
         		        echo 'Not deployed successfully'
 		        }
             }
-        }
+        }*/
 	stage('Terraform AWS') {
             steps {
 		withCredentials([string(credentialsId: '3c43648f-c6e5-4fc4-a491-ffd262c302f0', variable: 'acc'), string(credentialsId: '6a343ffb-a04c-439a-a4f8-75b5b6d51c74', variable: 'sec')]) {
-		    sh 'cp musicstore/target/MusicStore.war awstomcat/MusicStore.war'
-		    sh 'cd awstomcat'
-		    sh 'terraform init'
-		    sh 'terraform apply -var "access=$acc" -var "secret=$sec" -auto-approve '
-		    sh 'terraform output -raw aws_link'
+		    sh '''cp musicstore/target/MusicStore.war awstomcat/MusicStore.war
+		    cd awstomcat
+		    terraform init
+		    terraform apply -var "access=$acc" -var "secret=$sec" -auto-approve 
+		    terraform output -raw aws_link'''
 		}
             }
         }
