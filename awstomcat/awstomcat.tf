@@ -4,9 +4,9 @@ provider "aws" {
   secret_key = var.secret
 }
 
-resource "aws_key_pair" "deployer" {
-  key_name   = "deployer-key"
-  public_key = var.sshkey
+resource "aws_key_pair" "my_key" {
+  key_name   = "my-key"
+  public_key = file("awstomcat/my_key.pem")
 }
 
 resource "aws_instance" "Tomcat-Server" {
@@ -15,7 +15,7 @@ resource "aws_instance" "Tomcat-Server" {
     tags = {
         Name = "Tomcat-Server"
     }
-    key_name = "my-sshkey"
+    key_name = aws_key_pair.my_key.name
     user_data = data.template_file.asg_init.rendered
     provisioner "file" {
       source      = "MusicStore.war"
