@@ -8,7 +8,6 @@ module "testing_containers" {
 } 
 module "awstomcat" {
   source = "./awstomcat"
-  sshkey=var.ssh
   access=var.acc
   secret=var.sec
 } 
@@ -23,8 +22,4 @@ variable "acc" {
 variable "sec" {
   type = string
   default = "secret-key"
-}
-variable "ssh" {
-  type = string
-  default = "sshkey"
 }
