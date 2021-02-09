@@ -34,9 +34,6 @@ output "AWS_Link" {
 data "template_file" "asg_init" {
   template = file("${path.module}/userdata.tpl")
 }
-variable "sshkey" {
-  type = string
-}
 variable "access" {
   type = string
 }
