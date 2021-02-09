@@ -115,11 +115,12 @@ pipeline {
     }
      post {
         always {
-            sh '''
+		sh 'terraform destroy -auto-approve'
+            /*sh '''
 		docker rm -f mytomcat
 	        cd testing
 	        docker-compose down
-		'''
+		'''*/
         }
         success {
             echo 'Pipeline was Successful'
