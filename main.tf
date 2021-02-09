@@ -23,3 +23,6 @@ variable "sec" {
   type = string
   default = "secret-key"
 }
+output "tomcat_link" {
+  value = module.awstomcat.aws_link
+}
