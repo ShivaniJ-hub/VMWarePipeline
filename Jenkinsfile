@@ -96,7 +96,7 @@ pipeline {
 		    sh 'cp musicstore/target/MusicStore.war awstomcat/MusicStore.war'
 		    sh 'terraform init'
 		    sh 'terraform apply -target=module.awstomcat -var "acc=$acc" -var "sec=$sec" -auto-approve '
-		    sh 'terraform output -raw aws_link'
+		    sh 'terraform output -raw module.awstomcat.aws_link'
 		}
             }
         }
