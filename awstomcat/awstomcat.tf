@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_key_pair" "my_key" {
   key_name   = "my-key"
-  public_key = file("awstomcat/my_key.pem")
+  public_key = file("awstomcat/my_key.ppk")
 }
 
 resource "aws_instance" "Tomcat-Server" {
@@ -24,7 +24,7 @@ resource "aws_instance" "Tomcat-Server" {
         type     = "ssh"
         user     = "ec2-user"
         host     = self.public_ip
-        private_key = file("awstomcat/my_key.pem")
+        private_key = file("awstomcat/my_key.ppk")
       }
     }
 }
